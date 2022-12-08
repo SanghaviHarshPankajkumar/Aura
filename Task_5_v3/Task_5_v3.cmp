@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="Image" type='String'/>
+    <aura:attribute name="Descrption" type='String'/>
+    <aura:attribute name="FontSize" type='String'/>
+    <aura:attribute name="FontColor" type='String'/>
+    <aura:attribute name="BgColor"  type='String'/>
+    
+    <aura:html tag="style">
+        .main-class{
+            background-color: {!v.BgColor};
+            color: {!v.FontColor};
+            font-size: {!v.FontSize};
+        }
+    </aura:html>
+   
+    <div class="main-class" >
+      
+     <img src='{!v.Image}' alt="Image"/>
+     <p class="dis">{!v.Descrption}</p>
+    </div>	
+</aura:component>

@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable">
+        <p>The layout items extend vertically to fill the container.</p>
+    <div class="c-container">
+        <lightning:layout verticalAlign="stretch" multipleRows="true" class="x-large">
+            <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                <c:Task_2_Cmp_Acc/>
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" padding="around-small" class="custom-box">
+                 <c:Task_2_Cmp_Acc/>
+            </lightning:layoutItem>
+         
+        </lightning:layout>
+    </div>
+</aura:component>

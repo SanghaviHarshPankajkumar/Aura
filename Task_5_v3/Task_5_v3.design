@@ -1,0 +1,8 @@
+<design:component>
+    <design:attribute name="Image"/>
+    <design:attribute name="Descrption" />
+    <design:attribute name="FontSize"/>
+    <design:attribute name="FontColor"/>
+    <design:attribute name="BgColor" />
+
+</design:component>

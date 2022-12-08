@@ -1,0 +1,80 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride"
+                access="global" controller="ContactController2">
+    
+    <aura:attribute name="progressIndicatorFlag" type="String" />
+    <aura:attribute name="EventRecord" type="Event"  default="{ 'sobjectType': 'Event',
+    'ActivityDate':'',
+    'DurationInMinutes':'',
+    'ActivityDateTime':'',
+    'AccountId':'',
+   
+  }" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+    <aura:attribute name="Accountname" type="String"></aura:attribute>
+    
+    <aura:attribute name="Contactname" type="String"></aura:attribute>
+        <div class="demo-only" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" 
+                     aria-modal="true" aria-describedby="modal-content-id-1" 
+                     class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                 
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Account</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        
+                        
+                        <lightning:progressIndicator type="path" currentStep="{!v.progressIndicatorFlag}">
+                            <lightning:progressStep label="Step One" value="step1"/>
+                            <lightning:progressStep label="Step Two" value="step2"/>
+                            <lightning:progressStep label="Step Three" value="step3"/>
+                        </lightning:progressIndicator>
+                        
+                        <div aura:id="stepOne">
+                            
+                           <lightning:recordEditForm aura:id="accountRecordCreator" 
+                                 onsuccess="{!c.handleSuccess}"
+                                 objectApiName="Account">
+                                 <lightning:messages />
+                            <lightning:inputField fieldName="Name" id="NameAcc"/>
+                            <lightning:inputField fieldName="Industry" />
+                            <lightning:inputField fieldName="Rating" />
+                       
+                            <lightning:button label="Next" type="submit" onclick="{!c.goToStepTwo}" variant="brand"/> 
+                        </lightning:recordEditForm>
+                        </div>
+                        <div aura:id="stepTwo">
+                            <lightning:recordEditForm aura:id="contactRecordCreator" 
+                            onsuccess="{!c.handleSuccess2}"
+                            objectApiName="Contact">
+                            <lightning:messages />
+                          <lightning:inputField fieldName="Name" aura:id="NameCon" />
+                          <lightning:inputField fieldName="Phone" />
+                          <lightning:inputField fieldName="Email" />
+                         
+                          <lightning:button label="Back" onclick="{!c.goBackToStepOne}" />
+                            <lightning:button label="Next" type="Submit" onclick="{!c.goToStepThree}" variant="brand"/> 
+
+                        </lightning:recordEditForm>
+                       
+                        </div>
+                        <div aura:id="stepThree">
+                            <lightning:input aura:id="event" label="ActivityDate" type="DateTime" value="{!v.EventRecord.ActivityDate}"/>
+                            <lightning:input aura:id="event" label="DurationInMinutes" type="String" value="{!v.EventRecord.DurationInMinutes}"/>
+                            <lightning:input aura:id="event" label="ActivityDateTime" type="Date" value="{!v.EventRecord.ActivityDateTime}"/>
+                            <lightning:button label="Back" onclick="{!c.goBackToStepTwo}" />
+                            <lightning:button label="Submit"  onclick="{!c.submitEvent}" variant="brand"/> 
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open overlay"></div>
+        </div>
+        
+    
+</aura:component>

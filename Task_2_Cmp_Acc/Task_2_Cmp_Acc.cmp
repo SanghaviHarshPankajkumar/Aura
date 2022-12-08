@@ -1,0 +1,23 @@
+<aura:component controller ="Task_2_AccRelatedConController">
+    <aura:attribute name="PageHeading" type="String" default="AccountName and Related Contacts" />
+    <aura:attribute name="conData" type="List"/>
+    <aura:attribute name="AccIdforCon" type="String"/>
+    <div class=" slds-page-header slds-text-heading--large slds-align--absolute-center slds-box">       
+        {!v.PageHeading}              
+    </div>
+    <div class="slds-box">
+    <lightning:input type="text" name="searchKey" label="Enter Account Name" aura:id="searchKey" onchange="{!c.searchKeyChange}" placeholder="Search" />
+    </div>
+    <div class="slds-box"  ondragover="{!c.allowDrop}" ondrop="{!c.changeAccount}">
+        <aura:iteration items="{!v.conData}" var="Con">
+            <div class="slds-box slds-box_small slds-m-top_xx-small" draggable="true" ondragstart="{!c.dragstart}" id="{!Con.Id}">
+                <lightning:icon iconName="standard:contact" title="Contact" alternativeText="Contact" />
+               <b> Contact Name =</b>  {!Con.Name}<br/>
+               <b>Phone  = </b> {!Con.Phone}<br/>
+               <b>Email = </b>  {!Con.Email} 
+                </div>
+            </aura:iteration>
+    </div>
+    
+    
+</aura:component>
